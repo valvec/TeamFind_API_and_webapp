@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Page Title</title>
+
+    <!-- Add the CSS code for the menu bar here -->
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            text-align: center; /* This will center the items in the menu bar */
+        }
+        li {
+            display: inline-block;
+        }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li img {
+            float: left;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+    
+    <ul>
+        <li style="position: absolute; left: 30px;"><img src="logo.png" alt="logo"></li>
+        <li><a onclick="Home();return false;">Home</a></li>
+        <li><a onclick="Games();return false;">Games</a></li>
+    </ul>
+
+     <script>
+        function Home(){
+            var segments = window.location.pathname.split('/');
+            var toDelete = [];
+            for (var i = 0; i < segments.length; i++) {
+                if (segments[i].length < 1) {
+                    toDelete.push(i);
+                }
+            }
+            for (var i = 0; i < toDelete.length; i++) {
+                segments.splice(i, 1);
+            }
+            var filename = segments[segments.length - 1];
+            
+            if (filename=="TF_app"){
+                alert("Please login first.");
+            }
+            else{
+                window.location.assign("home.php")
+            }
+
+        }
+
+        function Games(){
+            var segments = window.location.pathname.split('/');
+            var toDelete = [];
+            for (var i = 0; i < segments.length; i++) {
+                if (segments[i].length < 1) {
+                    toDelete.push(i);
+                }
+            }
+            for (var i = 0; i < toDelete.length; i++) {
+                segments.splice(i, 1);
+            }
+            var filename = segments[segments.length - 1];
+            
+            if (filename=="TF_app"){
+                alert("Please login first.");
+            }
+            else{
+                window.location.assign("games.php")
+            }
+
+        }
+
+</script>
+    <!-- Rest of your HTML code here -->
+</body>
+</html>
